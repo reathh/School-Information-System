@@ -10,4 +10,7 @@ namespace AppBundle\Repository;
  */
 class InformationEntryRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getInformationEntries() {
+        return $this->getEntityManager()->findAll();
+    }
 }

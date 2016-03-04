@@ -2,12 +2,18 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}133 СОУ "А. С. Пушкин"{% endblock %}</title>
+
+        <link rel="stylesheet" href="/css/unslider.css">
+        <link rel="stylesheet" href="/css/unslider-dots.css">
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
+
+        <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="/js/unslider-min.js"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

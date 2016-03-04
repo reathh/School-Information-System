@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    <script src="js/slideshow.js"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="css/slideshow.css">
+{% endblock %}
+{% block body %}
+    <div id="slideshow" class="hidden">
+        <ul>
+            {% for entry in informationEntries %}
+                <li class="slideshow-element"
+                        {% if entry.backgroundImageName != null %}
+                    style="background-image: url('{{ vich_uploader_asset(entry, 'backgroundImageFile') }}')"
+                    {% endif %}>
+
+                    <div class="slideshow-title">
+                        {{ entry.title }}
+                    </div>
+                    <div class="slideshow-content">
+                        {{ entry.content }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

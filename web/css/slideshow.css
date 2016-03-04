@@ -1,0 +1,22 @@
+.slideshow-element {
+    background-size:cover;
+}
+.slideshow-title {
+
+}
+.slideshow-content {
+
+}
+.slideshow-background {
+    float: left;
+}
+
+
+.hidden { display: none; }
+
+html, body, .unslider, #slideshow, #slideshow ul, #slideshow li {
+    height: 100%;
+}
+html, body {
+    margin: 0;
+}
