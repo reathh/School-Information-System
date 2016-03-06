@@ -1,49 +1,48 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Information Entries</h1>
-    <h2><a href="{{ path('admin_index') }}">Go back to admin index</a></h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Image</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for informationEntry in informationEntries %}
-            <tr>
-                <td><a href="{{ path('entry_information_show', { 'id': informationEntry.id }) }}">{{ informationEntry.id }}</a></td>
-                <td>{{ informationEntry.title }}</td>
-                <td>{{ informationEntry.content }}</td>
-                <td>
-                    {% if informationEntry.backgroundImageName %}
-                        <img src="{{ vich_uploader_asset(informationEntry, 'backgroundImageFile') }}"
-                             alt="{{ informationEntry.title }}"/>
-                    {% else %}
-                        No image
-                    {% endif %}
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('entry_information_show', { 'id': informationEntry.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('entry_information_edit', { 'id': informationEntry.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <a href="{{ path('admin_index') }}">Go back to admin index</a>
+    <h2><a href="{{ path('entry_information_new') }}">Create a new entry</a></h2>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Information Entries</h3>
+        </div>
+        <div class="panel-body">
 
-    <ul>
-        <li>
-            <a href="{{ path('entry_information_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+            <table class="table vert-align-table">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for informationEntry in informationEntries %}
+                    <tr>
+                        <td>{{ informationEntry.title }}</td>
+                        <td>{{ informationEntry.content }}</td>
+                        <td>
+                            {% if informationEntry.backgroundImageName %}
+                                <img src="{{ vich_uploader_asset(informationEntry, 'backgroundImageFile') }}"
+                                     alt="{{ informationEntry.title }}" class="admin-image-preview"/>
+                            {% else %}
+                                No image
+                            {% endif %}
+                        <td>
+                            <a href="{{ path('entry_information_show', { 'id': informationEntry.id }) }}"
+                               class="btn btn-success btn-lg">show</a>
+
+                            <a href="{{ path('entry_information_edit', { 'id': informationEntry.id }) }}"
+                               class="btn btn-warning btn-lg">edit</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
 {% endblock %}

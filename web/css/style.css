@@ -1,0 +1,44 @@
+.hidden { display: none; }
+
+html, body, .unslider, #slideshow, #slideshow ul, #slideshow li {
+    height: 100%;
+}
+html, body {
+    margin: 0;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+.vert-align-table>tbody>tr>td{
+    vertical-align: middle;
+}
+
+.slideshow-element {
+    background-size:cover;
+    vertical-align: middle;
+    color: white;
+}
+.slideshow-title {
+    background: rgba(20, 20, 20, 0.4);
+    padding: 10px;
+}
+
+.slideshow-content {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.3em;
+}
+.slideshow-background {
+    float: left;
+}
+
+.admin-image-preview {
+    width: 250px;
+}
+
+#edit-entry-form>div {
+    margin-bottom: 10px;
+}

@@ -1,21 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>InformationEntry edit</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('entry_information_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Edit Entry</h3>
+        </div>
+        <div class="panel-body" id="edit-entry-form">
+            <div>
+                {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                {% if informationEntry.backgroundImageName %}
+                    <img src="{{ vich_uploader_asset(informationEntry, 'backgroundImageFile') }}"
+                         alt="{{ informationEntry.title }}" class="admin-image-preview"/>
+                {% endif %}
+                <div>
+                    <input type="submit" value="Edit" class="btn btn-success"/>
+                </div>
+                {{ form_end(edit_form) }}
+            </div>
+            <div>
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Delete" class="btn btn-danger">
+                {{ form_end(delete_form) }}
+            </div>
+            <div>
+                <a href="{{ path('entry_information_index') }}">Back to the list</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

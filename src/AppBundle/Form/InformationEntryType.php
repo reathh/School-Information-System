@@ -21,7 +21,9 @@ class InformationEntryType extends AbstractType
             ->add('backgroundImageFile', VichImageType::class, array(
                 'required'      => false,
                 'allow_delete'  => true,
-                'download_link' => true))
+                'download_link' => true,
+                'label' => false
+                ))
         ;
     }
     
