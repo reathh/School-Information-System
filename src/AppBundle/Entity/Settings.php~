@@ -38,28 +38,5 @@ class Settings
     {
         return $this->id;
     }
-
-    /**
-     * Set defaultColorForContent
-     *
-     * @param string $defaultColorForContent
-     *
-     * @return Settings
-     */
-    public function setDefaultColorForContent($defaultColorForContent)
-    {
-        $this->defaultColorForContent = $defaultColorForContent;
-
-        return $this;
-    }
-
-    /**
-     * Get defaultColorForContent
-     *
-     * @return string
-     */
-    public function getDefaultColorForContent()
-    {
-        return $this->defaultColorForContent;
-    }
 }
+

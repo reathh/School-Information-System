@@ -1,13 +1,19 @@
-{% for entry in informationEntries %}
-    <li class="slideshow-element"
-            {% if entry.backgroundImageName != null %}
-        style="background-image: url('{{ vich_uploader_asset(entry, 'backgroundImageFile') }}')"
-            {% endif %}>
-        <div class="slideshow-title">
-            <h2>{{ entry.title }}</h2>
-        </div>
-        <div class="slideshow-content text-center">
-            {{ entry.content }}
-        </div>
-    </li>
-{% endfor %}
+<ul>
+    {% for entry in informationEntries %}
+        <li class="slideshow-element"
+                {% if entry.backgroundImageName != null %}
+            style="background-image: url('{{ vich_uploader_asset(entry, 'backgroundImageFile') }}')"
+                {% endif %}>
+            <div class="slideshow-title">
+                <h2>{{ entry.title }}</h2>
+            </div>
+            <div class="slideshow-content text-center"
+                    {% if entry.contentColor %}
+                        style="color: {{ entry.contentColor }}"
+                    {% endif %}
+            >
+                {{ entry.content }}
+            </div>
+        </li>
+    {% endfor %}
+</ul>

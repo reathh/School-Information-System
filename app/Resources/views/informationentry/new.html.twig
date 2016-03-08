@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>InformationEntry creation</h1>
+    <div class="padded-page">
+        <h1>InformationEntry creation</h1>
 
-    {{ form_start(form) }}
+        {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('entry_information_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <h3 class="text-center"><a href="{{ path('entry_information_index') }}">Back to the list</a></h3>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/color-picker-initialization.js"></script>
 {% endblock %}

@@ -1,52 +1,61 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="panel panel-success">
-        <div class="panel-heading">
-            <h3 class="panel-title">{{ informationEntry.title | default("No title") }}</h3>
-        </div>
-        <div class="panel-body">
-            <table class="table">
-                <tbody>
-                <tr>
-                    <th>Id</th>
-                    <td>{{ informationEntry.id }}</td>
-                </tr>
-                <tr>
-                    <th>Content</th>
-                    <td>{{ informationEntry.content }}</td>
-                </tr>
-                <tr>
-                    <th>Dateadded</th>
-                    <td>{% if informationEntry.dateAdded %}{{ informationEntry.dateAdded|date('Y-m-d H:i:s') }}{% endif %}</td>
-                </tr>
-                <tr>
-                    <th>Image</th>
-                    <td>
-                        {% if informationEntry.backgroundImageName %}
-                            <img src="{{ vich_uploader_asset(informationEntry, 'backgroundImageFile') }}"
-                                 alt="{{ informationEntry.title }}" class="admin-image-preview"/>
-                        {% else %}
-                            No image
-                        {% endif %}
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+<div class="panel panel-success padded-page">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{ informationEntry.title | default("No title") }}</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ informationEntry.id }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ informationEntry.content | default('No content') }}</td>
+            </tr>
+            <tr>
+                <th>Dateadded</th>
+                <td>{{ informationEntry.dateAdded|date('d-m-Y H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Content Color</th>
+                <td>{% if informationEntry.contentColor %}
+                    <div id="content-color-show" style="background-color: {{ informationEntry.contentColor }}"></div>
+                    {% else %}
+                    No content color
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>
+                    {% if informationEntry.backgroundImageName %}
+                        <img src="{{ vich_uploader_asset(informationEntry, 'backgroundImageFile') }}"
+                             alt="{{ informationEntry.title }}" class="admin-image-preview"/>
+                    {% else %}
+                        No image
+                    {% endif %}
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
-            <div class="text-center">
-                <ul class="list-unstyled list-inline">
-                    <li>
-                        <a href="{{ path('entry_information_edit', { 'id': informationEntry.id }) }}"
-                           class="btn btn-warning">edit</a></li>
-                    <li>
-                        {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete" class="btn btn-danger">
-                        {{ form_end(delete_form) }}
-                    </li>
-                </ul>
-                <h3><a href="{{ path('entry_information_index') }}">Back to the list</a></h3>
-            </div>
+        <div class="text-center">
+            <ul class="list-unstyled list-inline">
+                <li>
+                    <a href="{{ path('entry_information_edit', { 'id': informationEntry.id }) }}"
+                       class="btn btn-warning">edit</a></li>
+                <li>
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+            <h3><a href="{{ path('entry_information_index') }}">Back to the list</a></h3>
         </div>
     </div>
+</div>
 {% endblock %}

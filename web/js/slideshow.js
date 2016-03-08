@@ -11,7 +11,7 @@ $(document).ready(function ($) {
     getNewEntries().done(function (data) {
         oldData = data;
 
-        $('#slideshow>ul').html(data);
+        slider.html(data);
         slider.unslider(sliderOptions).removeClass('hidden');
     });
 
@@ -26,8 +26,9 @@ function updateSlideShow() {
     getNewEntries().done(function (data) {
         if (data != oldData) {
             console.log('added new data to the slideshow');
-            $('#slideshow>ul').html(data);
-            slider.init(sliderOptions);
+            $('#slideshow-wrapper').html(slider);
+            slider.html(data);
+            slider.unslider(sliderOptions);
         } else {
             console.log('no change in entries');
             //TODO: after several times with no changes do something (show presentations for example)

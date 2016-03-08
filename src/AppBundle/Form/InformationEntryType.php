@@ -2,6 +2,8 @@
 
 namespace AppBundle\Form;
 
+use Doctrine\DBAL\Types\StringType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,6 +26,11 @@ class InformationEntryType extends AbstractType
                 'download_link' => true,
                 'label' => false
                 ))
+            ->add('contentColor')
+            ->add('send', SubmitType::class, array(
+                'attr' => array('class' => 'btn btn-success btn-lg text-center'),
+                'label' => 'Create'
+            ))
         ;
     }
     

@@ -1,6 +1,6 @@
 .hidden { display: none; }
 
-html, body, .unslider, #slideshow, #slideshow ul, #slideshow li {
+html, body, .unslider, #slideshow, #slideshow ul, #slideshow li, #slideshow-wrapper {
     height: 100%;
 }
 html, body {
@@ -41,4 +41,15 @@ h1, h2, h3 {
 
 #edit-entry-form>div {
     margin-bottom: 10px;
+}
+
+#content-color-show {
+    width: 60px;
+    height: 20px;
+}
+#information_entry_contentColor {
+    width: 100px;
+}
+.padded-page {
+    margin: 20px;
 }
