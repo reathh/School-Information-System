@@ -4,3 +4,7 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+craue_config_settings:
+  resource: "@CraueConfigBundle/Resources/config/routing/settings.xml"
+  prefix: /settings

@@ -47,11 +47,9 @@
             <ul class="list-unstyled list-inline">
                 <li>
                     <a href="{{ path('entry_information_edit', { 'id': informationEntry.id }) }}"
-                       class="btn btn-warning">edit</a></li>
+                       class="btn btn-warning btn-lg">edit</a></li>
                 <li>
-                    {{ form_start(delete_form) }}
-                    <input type="submit" value="Delete" class="btn btn-danger">
-                    {{ form_end(delete_form) }}
+                    {{ form(delete_form) }}
                 </li>
             </ul>
             <h3><a href="{{ path('entry_information_index') }}">Back to the list</a></h3>

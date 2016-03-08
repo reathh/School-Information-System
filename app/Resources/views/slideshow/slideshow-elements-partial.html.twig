@@ -7,12 +7,8 @@
             <div class="slideshow-title">
                 <h2>{{ entry.title }}</h2>
             </div>
-            <div class="slideshow-content text-center"
-                    {% if entry.contentColor %}
-                        style="color: {{ entry.contentColor }}"
-                    {% endif %}
-            >
-                {{ entry.content }}
+            <div class="slideshow-content text-center" style="color: {{ entry.contentColor| default(craue_setting('default_content_color')) }}">
+                {{ entry.content|nl2br }}
             </div>
         </li>
     {% endfor %}

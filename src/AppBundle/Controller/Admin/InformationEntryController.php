@@ -2,19 +2,22 @@
 
 namespace AppBundle\Controller\Admin;
 
+use AppBundle\Controller\BaseController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\InformationEntry;
 use AppBundle\Form\InformationEntryType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * InformationEntry controller.
  *
  * @Route("/admin/entry")
  */
-class InformationEntryController extends Controller
+class InformationEntryController extends BaseController
 {
     /**
      * Creates a new InformationEntry entity.
@@ -133,6 +136,9 @@ class InformationEntryController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('entry_information_delete', array('id' => $informationEntry->getId())))
             ->setMethod('DELETE')
+            ->add('send', SubmitType::class, array(
+                'attr' => array('class' => 'btn btn-danger btn-lg text-center'),
+                'label' => 'Delete'))
             ->getForm()
         ;
     }

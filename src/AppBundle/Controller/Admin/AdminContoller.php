@@ -3,6 +3,7 @@
 namespace AppBundle\Controller\Admin;
 
 
+use AppBundle\Controller\BaseController;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,9 +18,8 @@ use Symfony\Component\HttpFoundation\Response;
  * Admin controller.
  *
  * @Route("/admin")
- * @Security("has_role('ROLE_ADMIN')")
  */
-class AdminContoller extends Controller
+class AdminContoller extends BaseController
 {
     /**
      * @Route("/", name="admin_index")
@@ -54,5 +54,15 @@ class AdminContoller extends Controller
         $userManager->updateUser($user);
 
         return new Response("User successfully removed ROLE_ADMIN");
+    }
+
+    /**
+     * @Route("/settings/{name}/{value}", name="change_setting")
+     * @Method("GET")
+     */
+    public function changeSetting($name, $value) {
+        $this->get('craue_config')->set($name, $value);
+        $this->addFlash('notice', 'Successfully edited value');
+        return $this->redirectToRoute('admin_index');
     }
 }

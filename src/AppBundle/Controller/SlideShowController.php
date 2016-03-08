@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
-class SlideShowController extends Controller
+class SlideShowController extends BaseController
 {
     /**
      * @Route("/", name="homepage")

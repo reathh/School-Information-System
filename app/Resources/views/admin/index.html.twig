@@ -2,7 +2,53 @@
 
 {% block body %}
     <h1>Admin Panel</h1>
-    <p>
-    <a href="{{ path('entry_information_index') }}">View all information entries</a>
-    </p>
+    {% for flash_message in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    <h2><a href="{{ path('entry_information_index') }}">View all information entries</a></h2>
+
+    <div class="panel panel-success padded-page">
+        <div class="panel-heading">
+            <h3 class="panel-title">Edit Privileges</h3>
+        </div>
+        <div class="panel-body" id="edit-entry-form">
+            <label for="admin-username-field">Username</label>
+            <input type="text" id="admin-username-field" required="required">
+            <button class="btn btn-success" id="make-admin-button">Make Admin</button>
+            <button class="btn btn-danger" id="remove-admin-button">Remove Admin</button>
+        </div>
+    </div>
+
+    <div class="panel panel-success padded-page">
+        <div class="panel-heading">
+            <h3 class="panel-title">Configurations</h3>
+        </div>
+        <div class="panel-body" id="edit-entry-form">
+            <label for="information_entry_contentColor">Default content color:</label>
+            <input type="text" id="information_entry_contentColor">
+            <button class="btn btn-success" id="change-default-color">Change</button>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="/js/color-picker-initialization.js"></script>
+
+    <script>
+        var username = $('#admin-username-field').val();
+        var defaultContentColor = $('#information_entry_contentColor');
+        defaultContentColor.val("{{ craue_setting('default_content_color') }}");
+        $('#make-admin-button').click(function () {
+            window.location.href = "/admin/makeAdmin/" + username;
+        });
+
+        $('#remove-admin-button').click(function () {
+            window.location.href = "/admin/removeAdmin/" + username;
+        });
+
+        $('#change-default-color').click(function () {
+            window.location.href = "/admin/settings/default_content_color/" + encodeURIComponent(defaultContentColor.val());
+        })
+    </script>
 {% endblock %}
